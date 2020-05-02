@@ -2,6 +2,7 @@ import FilterButton from '../../molecules/FilterButton';
 import H3 from './../../atoms/H3';
 import H4 from './../../atoms/H4';
 import LaunchCard from './../../atoms/LaunchCard';
+import Logo from '../../molecules/Logo';
 import Rank from './../../atoms/Rank';
 import React from 'react';
 import ReloadButton from '../../molecules/ReloadButton';
@@ -15,6 +16,7 @@ const Ui = () => {
             <FilterButton />
             <SortButton />
             <ReloadButton />
+            <Logo />
             <LaunchCard>
                 <Section side='left'>
                     <Rank>#1</Rank>
