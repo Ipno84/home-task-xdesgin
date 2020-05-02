@@ -1,12 +1,10 @@
 export default function isPositionStickySupported(): boolean {
-    const prop: string = 'position:';
-    const value: string = 'sticky';
-    const prefixes: string[] = ['-webkit-', '-moz-', '-o-', '-ms-'];
+    const prefix: string[] = ['', '-o-', '-webkit-', '-moz-', '-ms-'];
+    const test: CSSStyleDeclaration = document.head.style;
 
-    let el: HTMLAnchorElement = document.createElement('a');
-    let mStyle: CSSStyleDeclaration = el.style;
-    mStyle.cssText =
-        prop + prefixes.join(value + ';' + prop).slice(0, -prop.length);
+    for (let i = 0; i < prefix.length; i += 1) {
+        test.position = `${prefix[i]}sticky`;
+    }
 
-    return mStyle.position.indexOf(value) !== -1;
+    return test.position === 'sticky' ? true : false;
 }

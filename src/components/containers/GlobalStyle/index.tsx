@@ -1,5 +1,7 @@
+import { createGlobalStyle, css } from 'styled-components';
+
 import Props from './props';
-import { createGlobalStyle } from 'styled-components';
+import isPositionStickySupported from './../../../helpers/isPositionStickySupported';
 
 const GlobalStyle = createGlobalStyle<Props>`
     body {
@@ -8,6 +10,11 @@ const GlobalStyle = createGlobalStyle<Props>`
         color: ${({ theme }) => theme.colors.dark(1)};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        ${() =>
+            !isPositionStickySupported() &&
+            css`
+                padding-top: 5.6875rem;
+            `}
     }
     * {
         box-sizing: border-box;
