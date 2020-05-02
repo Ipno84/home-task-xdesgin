@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle<Props>`
     body {
         font-size: 16px;
         font-family: ${({ theme }) => theme.fontFamilies.primary};
+        color: ${({ theme }) => theme.colors.dark(1)};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
