@@ -4,11 +4,13 @@ import isPositionStickySupported from './../../../../helpers/isPositionStickySup
 
 const FiltersContainer = styled.div`
     text-align: right;
+    padding-right: 5rem;
     ${() =>
         isPositionStickySupported() &&
         css`
             position: sticky;
             top: 1.5rem;
+            z-index: 1;
         `}
 `;
 

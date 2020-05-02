@@ -1,20 +1,16 @@
-import { createGlobalStyle, css } from 'styled-components';
-
 import Props from './props';
-import isPositionStickySupported from './../../../helpers/isPositionStickySupported';
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle<Props>`
+    html {
+        overflow-x: hidden;
+    }
     body {
         font-size: 16px;
         font-family: ${({ theme }) => theme.fontFamilies.primary};
         color: ${({ theme }) => theme.colors.dark(1)};
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        ${() =>
-            !isPositionStickySupported() &&
-            css`
-                padding-top: 5.6875rem;
-            `}
     }
     * {
         box-sizing: border-box;
@@ -64,6 +60,14 @@ const GlobalStyle = createGlobalStyle<Props>`
             url('assets/font/BrandonGrotesque-Medium.ttf') format('truetype');
         font-weight: 500;
         font-style: normal;
+    }
+
+    .ReactVirtualized__Grid.ReactVirtualized__List {
+        width: auto !important;
+        padding-right: 5rem;
+    }
+    .ReactVirtualized__Grid__innerScrollContainer {
+        max-width: inherit !important;
     }
 `;
 
