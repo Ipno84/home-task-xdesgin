@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import Setup from './components/containers/Setup';
 import { ThemeProvider } from 'styled-components';
+import Ui from './components/layout/pages/Ui';
 import theme from './constants/ThemeConstants';
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
                     <Normalize />
                     <GlobalStyle />
                     <Setup />
-                    <p>Ciao</p>
+                    <Ui />
                 </ThemeProvider>
             </PersistGate>
         </Provider>
