@@ -7,8 +7,12 @@ import SelectItemYear from '../../molecules/SelectItemYear';
 import setYearAction from './../../../../state/actions/LaunchesActions/setYearAction';
 import { useDispatch } from 'react-redux';
 
-const options: Option[] = Object.keys(Array.from({ length: 30 })).map((e) => {
-    const label = String(2020 - Number(e));
+const firstYear = 2006;
+const currentYear = new Date().getFullYear();
+const length = currentYear - firstYear + 1;
+
+const options: Option[] = Object.keys(Array.from({ length })).map((e) => {
+    const label = String(currentYear - Number(e));
     return {
         optionKey: label,
         label,

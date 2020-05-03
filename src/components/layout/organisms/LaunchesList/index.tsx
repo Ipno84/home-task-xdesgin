@@ -4,71 +4,35 @@ import { List, WindowScroller } from 'react-virtualized';
 
 import Launch from '../../molecules/Launch';
 import React from 'react';
+import { Store } from '../../../../../models/state/store';
+import getItemsSelector from './../../../../state/selectors/LaunchesSelectors/getItemsSelector';
+import { useSelector } from 'react-redux';
 
-const list = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
-];
-
-function rowRenderer({
-    key, // Unique key within array of rows
-    index, // Index of row within collection
-    isScrolling, // The List is currently being scrolled
-    isVisible, // This row is visible within the List (eg it is not an overscanned row)
-    style, // Style object to be applied to row (to position it)
-}: any) {
+function rowRenderer(style: any, launch: Launch) {
     return (
         <div
-            key={index}
+            key={launch.flight_number}
             style={{
                 ...style,
                 width: '100%',
             }}
         >
-            <Launch />
-            {/* {list[index]} */}
+            <Launch
+                flightNumber={launch.flight_number}
+                missionName={launch.mission_name}
+                date={launch.launch_date_unix}
+                rocketName={
+                    launch.rocket && launch.rocket.rocket_name
+                        ? launch.rocket.rocket_name
+                        : ''
+                }
+            />
         </div>
     );
 }
 
 const LaunchesList = () => {
+    const items = useSelector((state: Store) => getItemsSelector(state));
     return (
         <WindowScroller>
             {({ height, isScrolling, onChildScroll, scrollTop }) => (
@@ -79,9 +43,11 @@ const LaunchesList = () => {
                     onScroll={onChildScroll}
                     scrollTop={scrollTop}
                     width={300}
-                    rowCount={list.length}
+                    rowCount={items.length}
                     rowHeight={85}
-                    rowRenderer={rowRenderer}
+                    rowRenderer={(payload: any) => {
+                        return rowRenderer(payload.style, items[payload.index]);
+                    }}
                 />
             )}
         </WindowScroller>

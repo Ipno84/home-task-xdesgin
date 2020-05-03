@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import H3 from '../H3';
 import H4 from './../H4';
 import Props from './props';
+import Rank from '../Rank';
 
 const Section = styled.div<Props>`
     ${({ side }) => {
@@ -12,10 +14,15 @@ const Section = styled.div<Props>`
                     overflow: hidden;
                     text-overflow: ellipsis;
                     width: 5.25rem;
-                    padding: 0 1rem;
+                    padding: 0 0.5rem;
+                    ${Rank} {
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                     @media (min-width: 410px) {
                         width: 7.25rem;
-                        padding: 0 1rem 0 2rem;
+                        padding: 0 0.5rem 0 2rem;
                     }
                     @media (min-width: 768px) {
                         width: 8.25rem;
@@ -35,6 +42,14 @@ const Section = styled.div<Props>`
             case 'body':
                 return css`
                     flex: 1;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    ${H3} {
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        line-height: 3rem;
+                    }
                 `;
             default:
                 return css``;

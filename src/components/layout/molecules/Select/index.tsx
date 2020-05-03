@@ -26,6 +26,7 @@ const Select: React.FC<Props> = ({
                 {options.map((option) => {
                     return (
                         <ItemComponent
+                            key={option.optionKey}
                             onClick={() => onSelectOption(option)}
                             {...option}
                         />

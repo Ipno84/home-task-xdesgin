@@ -2,10 +2,10 @@ import {
     HOST,
     LAUNCHES_ENDPOINT,
     VERSION,
-} from './../../../constants/ApiConstants';
+} from '../../../constants/ApiConstants';
 import axios, { AxiosPromise } from 'axios';
 
-export default function getAddressesCall(
+export default function getLaunchesCall(
     params: GetLaunchesParams = {}
 ): AxiosPromise {
     const endpoint = [HOST, VERSION, LAUNCHES_ENDPOINT].join('/');
