@@ -5,6 +5,7 @@ import isPositionStickySupported from './../../../../helpers/isPositionStickySup
 const FiltersContainer = styled.div`
     text-align: right;
     padding-right: 5rem;
+    margin-bottom: 0.8125rem;
     ${() =>
         isPositionStickySupported() &&
         css`
