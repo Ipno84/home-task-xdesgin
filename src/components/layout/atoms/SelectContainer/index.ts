@@ -15,7 +15,7 @@ const SelectContainer = styled.ul<Props>`
     list-style: none;
     text-align: left;
     border-radius: 0.625rem;
-    transition: top 0.3s ease, opacity 0.3s ease;
+    transition: top 0.15s ease, opacity 0.15s ease;
     ${({ visible }) =>
         visible
             ? css`

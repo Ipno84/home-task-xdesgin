@@ -4,6 +4,8 @@ import { SUCCESS } from '../../constants/BaseConstants';
 
 const initialState: LaunchesStateType = {
     items: [],
+    year: '',
+    order: 'asc',
 };
 
 const LaunchesReducer = (

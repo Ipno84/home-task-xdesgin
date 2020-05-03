@@ -50,7 +50,7 @@ type Sort =
     | 'raan'
     | 'launch_success';
 
-type Desc = 'asc' | 'desc';
+type Order = 'asc' | 'desc';
 
 declare interface GetLaunchesParams {
     // Optional querystrings
@@ -109,5 +109,5 @@ declare interface GetLaunchesParams {
     limit?: number;
     offset?: number;
     sort?: Sort;
-    order?: Desc;
+    order?: Order;
 }

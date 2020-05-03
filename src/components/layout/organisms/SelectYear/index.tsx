@@ -3,16 +3,19 @@ import { Option } from '../../molecules/Select/props';
 import React from 'react';
 import Select from '../../molecules/Select';
 
-const options: Option[] = Object.keys(Array.from({ length: 30 })).map((e) => ({
-    optionKey: String(2020 - Number(e)),
-    label: String(2020 - Number(e)),
-}));
+const options: Option[] = Object.keys(Array.from({ length: 30 })).map((e) => {
+    const label = String(2020 - Number(e));
+    return {
+        optionKey: label,
+        label,
+    };
+});
 
 const SelectYear: React.FC = () => {
     return (
         <Select
             trigger={FilterButton}
-            options={options}
+            options={[{ optionKey: '', label: 'None' }, ...options]}
             onSelectOption={(option: Option) => console.log(option)}
         />
     );
