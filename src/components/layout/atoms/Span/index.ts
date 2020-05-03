@@ -12,6 +12,14 @@ const Span = styled.span<Props>`
                 display: inline-block;
             }
         `}
+    ${({ showSm }) =>
+        showSm &&
+        css`
+            display: none;
+            @media (max-width: 409px) {
+                display: inline-block;
+            }
+        `}
 `;
 
 export default Span;

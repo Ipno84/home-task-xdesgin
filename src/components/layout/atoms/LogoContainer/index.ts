@@ -4,12 +4,19 @@ import styled from 'styled-components';
 
 const LogoContainer = styled.div`
     ${Img} {
-        height: 1.375rem;
+        height: 1rem;
+        @media (min-width: 410px) {
+            height: 1.375rem;
+        }
     }
     ${Span} {
-        font-size: 1.25rem;
+        font-size: 1rem;
         position: relative;
         left: -0.675rem;
+        @media (min-width: 410px) {
+            font-size: 1.25rem;
+            left: -0.5rem;
+        }
     }
 `;
 

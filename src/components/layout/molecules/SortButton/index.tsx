@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
+import SelectedOrder from '../SelectedOrder';
 import Span from '../../atoms/Span';
 import toggleOrderAction from './../../../../state/actions/LaunchesActions/toggleOrderAction';
 import { useDispatch } from 'react-redux';
@@ -19,7 +20,7 @@ const SortButton = () => {
                     hideSm={true}
                     dangerouslySetInnerHTML={{ __html: '&nbsp;' }}
                 />
-                <Span>Descending</Span>
+                <SelectedOrder />
             </Span>
             <Icon icon='sort' />
         </Button>
