@@ -2,6 +2,7 @@ declare interface LaunchesStateType {
     items: Launch[];
     year: string;
     order: Order;
+    isLoading: boolean;
 }
 
 declare interface GetLaunchesActionArgs {

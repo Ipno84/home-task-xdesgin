@@ -4,10 +4,14 @@ import Props from './props';
 import React from 'react';
 import SelectedYear from '../SelectedYear';
 import Span from '../../atoms/Span';
+import { Store } from '../../../../../models/state/store';
+import isLoadingSelector from './../../../../state/selectors/LaunchesSelectors/isLoadingSelector';
+import { useSelector } from 'react-redux';
 
 const FilterButton: React.FC<Props> = ({ onClick, buttonRef }) => {
+    const isLoading = useSelector((state: Store) => isLoadingSelector(state));
     return (
-        <Button ref={buttonRef} onClick={onClick}>
+        <Button disabled={isLoading} ref={buttonRef} onClick={onClick}>
             <Span>
                 <Span hideSm={true}>Filter by</Span>
                 <Span

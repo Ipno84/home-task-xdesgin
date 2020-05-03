@@ -44,6 +44,10 @@ const Button = styled.button<Props>`
     &:active {
         background-color: ${({ theme }) => theme.colors.primary(1, 0.2)};
     }
+    &:disabled {
+        pointer-events: none;
+        background-color: ${({ theme }) => theme.colors.primary(0.4)};
+    }
     ${Span} {
         color: ${({ theme }) => theme.colors.white(1)};
         font-weight: 700;

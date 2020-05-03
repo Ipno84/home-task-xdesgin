@@ -1,19 +1,22 @@
 import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import SelectedOrder from '../SelectedOrder';
 import Span from '../../atoms/Span';
+import { Store } from '../../../../../models/state/store';
+import isLoadingSelector from './../../../../state/selectors/LaunchesSelectors/isLoadingSelector';
 import toggleOrderAction from './../../../../state/actions/LaunchesActions/toggleOrderAction';
-import { useDispatch } from 'react-redux';
 
 const SortButton = () => {
     const dispatch = useDispatch();
     const toggleOrder = useCallback(() => dispatch(toggleOrderAction()), [
         dispatch,
     ]);
+    const isLoading = useSelector((state: Store) => isLoadingSelector(state));
     return (
-        <Button onClick={() => toggleOrder()}>
+        <Button disabled={isLoading} onClick={() => toggleOrder()}>
             <Span>
                 <Span hideSm={true}>Sort</Span>
                 <Span

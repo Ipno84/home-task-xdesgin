@@ -1,3 +1,4 @@
+import { FAILURE, SUCCESS } from '../../constants/BaseConstants';
 import {
     GET_LAUNCHES,
     SET_YEAR,
@@ -5,12 +6,12 @@ import {
 } from './../../constants/LaunchesConstants';
 
 import { ReducerActionType } from '../../../models/state/store';
-import { SUCCESS } from '../../constants/BaseConstants';
 
 const initialState: LaunchesStateType = {
     items: [],
     year: '',
     order: 'asc',
+    isLoading: false,
 };
 
 const LaunchesReducer = (
@@ -18,10 +19,21 @@ const LaunchesReducer = (
     action: ReducerActionType
 ) => {
     switch (action.type) {
+        case GET_LAUNCHES:
+            return {
+                ...state,
+                isLoading: true,
+            };
+        case GET_LAUNCHES + FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+            };
         case GET_LAUNCHES + SUCCESS:
             return {
                 ...state,
                 items: action.items,
+                isLoading: false,
             };
         case SET_YEAR + SUCCESS:
             return {
