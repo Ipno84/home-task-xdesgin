@@ -1,4 +1,9 @@
-import { GET_LAUNCHES } from './../../constants/LaunchesConstants';
+import {
+    GET_LAUNCHES,
+    SET_YEAR,
+    TOGGLE_ORDER,
+} from './../../constants/LaunchesConstants';
+
 import { ReducerActionType } from '../../../models/state/store';
 import { SUCCESS } from '../../constants/BaseConstants';
 
@@ -17,6 +22,16 @@ const LaunchesReducer = (
             return {
                 ...state,
                 items: action.items,
+            };
+        case SET_YEAR + SUCCESS:
+            return {
+                ...state,
+                year: action.year,
+            };
+        case TOGGLE_ORDER:
+            return {
+                ...state,
+                order: state.order === 'asc' ? 'desc' : 'asc',
             };
         default:
             return state;

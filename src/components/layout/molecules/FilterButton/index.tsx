@@ -2,6 +2,7 @@ import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
 import Props from './props';
 import React from 'react';
+import SelectedYear from '../SelectedYear';
 import Span from '../../atoms/Span';
 
 const FilterButton: React.FC<Props> = ({ onClick, buttonRef }) => {
@@ -14,6 +15,7 @@ const FilterButton: React.FC<Props> = ({ onClick, buttonRef }) => {
                     dangerouslySetInnerHTML={{ __html: '&nbsp;' }}
                 />
                 <Span>Year</Span>
+                <SelectedYear />
             </Span>
             <Icon icon='select' />
         </Button>

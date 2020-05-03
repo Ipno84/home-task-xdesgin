@@ -2,12 +2,17 @@ import React, { useMemo, useRef, useState } from 'react';
 
 import Props from './props';
 import SelectContainer from '../../atoms/SelectContainer';
-import SelectItem from '../../atoms/SelectItem';
 import SelectWrapper from '../../atoms/SelectWrapper';
 import useOutsideClick from '../../../../hooks/useOutsideClick';
 
-const Select: React.FC<Props> = ({ trigger, options, onSelectOption }) => {
+const Select: React.FC<Props> = ({
+    trigger,
+    item,
+    options,
+    onSelectOption,
+}) => {
     const TriggerComponent: any = useMemo(() => trigger, [trigger]);
+    const ItemComponent: any = useMemo(() => item, [item]);
     const [isOpen, setIsOpen] = useState(false);
     const ref: React.MutableRefObject<HTMLDivElement | undefined> = useRef();
     useOutsideClick(ref, () => setIsOpen(false));
@@ -15,16 +20,15 @@ const Select: React.FC<Props> = ({ trigger, options, onSelectOption }) => {
         <SelectWrapper>
             <TriggerComponent
                 buttonRef={ref}
-                onClick={() => {
-                    setIsOpen(!isOpen);
-                }}
+                onClick={() => setIsOpen(!isOpen)}
             />
             <SelectContainer visible={isOpen}>
                 {options.map((option) => {
                     return (
-                        <SelectItem onClick={() => onSelectOption(option)}>
-                            {option.label}
-                        </SelectItem>
+                        <ItemComponent
+                            onClick={() => onSelectOption(option)}
+                            {...option}
+                        />
                     );
                 })}
             </SelectContainer>

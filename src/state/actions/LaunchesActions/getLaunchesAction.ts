@@ -1,6 +1,6 @@
-import { FAILURE, SUCCESS } from '../../constants/BaseConstants';
+import { FAILURE, SUCCESS } from '../../../constants/BaseConstants';
 
-import { GET_LAUNCHES } from '../../constants/LaunchesConstants';
+import { GET_LAUNCHES } from '../../../constants/LaunchesConstants';
 
 export default function getLaunchesAction({
     success,

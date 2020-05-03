@@ -1,4 +1,4 @@
-import { TOGGLE_ORDER } from '../../constants/LaunchesConstants';
+import { TOGGLE_ORDER } from '../../../constants/LaunchesConstants';
 
 export default function toggleOrderAction(): ActionType {
     return {

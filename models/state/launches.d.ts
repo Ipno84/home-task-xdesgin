@@ -12,6 +12,7 @@ declare interface GetLaunchesActionArgs {
 
 declare interface SetYearActionArgs {
     year?: string;
+    success?: boolean;
 }
 
 declare interface GetLaunchesActionType

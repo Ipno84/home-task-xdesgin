@@ -1,6 +1,6 @@
 import { WebStorage } from 'redux-persist';
 
-declare type ReducerActionType = GetLaunchesActionType;
+declare type ReducerActionType = GetLaunchesActionType & SetYearActionType & ActionType;
 
 declare type PersistKeyType = 'xspace';
 
