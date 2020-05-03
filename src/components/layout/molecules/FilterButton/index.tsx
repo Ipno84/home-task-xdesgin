@@ -6,7 +6,14 @@ import Span from '../../atoms/Span';
 const FilterButton = () => {
     return (
         <Button>
-            <Span>Filter by Year</Span>
+            <Span>
+                <Span hideSm={true}>Filter by</Span>
+                <Span
+                    hideSm={true}
+                    dangerouslySetInnerHTML={{ __html: '&nbsp;' }}
+                />
+                <Span>Year</Span>
+            </Span>
             <Icon icon='select' />
         </Button>
     );

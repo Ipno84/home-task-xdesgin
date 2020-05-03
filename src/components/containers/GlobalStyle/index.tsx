@@ -64,9 +64,8 @@ const GlobalStyle = createGlobalStyle<Props>`
 
     .ReactVirtualized__Grid.ReactVirtualized__List {
         width: auto !important;
-        padding-right: 5rem;
-        padding-left: 44%;
         overflow: inherit !important;
+        outline: none;
     }
     .ReactVirtualized__Grid__innerScrollContainer {
         max-width: inherit !important;

@@ -8,11 +8,24 @@ const Section = styled.div<Props>`
         switch (side) {
             case 'left':
                 return css`
-                    width: 8.25rem;
-                    padding: 0 1rem 0 2rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 5.25rem;
+                    padding: 0 1rem;
+                    @media (min-width: 410px) {
+                        width: 7.25rem;
+                        padding: 0 1rem 0 2rem;
+                    }
+                    @media (min-width: 768px) {
+                        width: 8.25rem;
+                    }
                 `;
             case 'right':
                 return css`
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     padding: 0 1rem;
                     text-align: right;
                     ${H4} {

@@ -1,16 +1,16 @@
 import Filters from '../../organisms/Filters';
 import Header from '../../organisms/Header';
-import LaunchesList from '../../organisms/LaunchesList';
+import HomeList from '../../templates/HomeList';
 import React from 'react';
 
-const Ui = () => {
+const Home = () => {
     return (
         <>
             <Header />
             <Filters />
-            <LaunchesList />
+            <HomeList />
         </>
     );
 };
 
-export default Ui;
+export default Home;

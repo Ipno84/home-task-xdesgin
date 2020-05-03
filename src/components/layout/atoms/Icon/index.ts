@@ -1,6 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { Keyframes, css, keyframes } from 'styled-components';
 
 import Props from './props';
+
+const spinAnimation: Keyframes = keyframes`
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+`;
 
 const Icon = styled.i<Props>`
     display: inline-block;
@@ -8,6 +13,11 @@ const Icon = styled.i<Props>`
     background-position: top left;
     background-repeat: no-repeat;
     width: 0.875rem;
+    ${({ spin }) =>
+        spin &&
+        css`
+            animation: ${spinAnimation} 1s linear infinite;
+        `}
     ${({ icon }) => {
         switch (icon) {
             case 'refresh':

@@ -6,7 +6,14 @@ import Span from '../../atoms/Span';
 const SortButton = () => {
     return (
         <Button>
-            <Span>Sort Descending</Span>
+            <Span>
+                <Span hideSm={true}>Sort</Span>
+                <Span
+                    hideSm={true}
+                    dangerouslySetInnerHTML={{ __html: '&nbsp;' }}
+                />
+                <Span>Descending</Span>
+            </Span>
             <Icon icon='sort' />
         </Button>
     );
