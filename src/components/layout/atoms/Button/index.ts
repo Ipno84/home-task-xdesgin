@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import Icon from './../Icon';
 import Props from './props';
+import SelectWrapper from './../SelectWrapper';
 import Span from './../Span';
 
 const Button = styled.button<Props>`
@@ -16,7 +17,6 @@ const Button = styled.button<Props>`
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 0.5625rem;
     ${({ rounded }) =>
         rounded &&
         css`
@@ -51,8 +51,11 @@ const Button = styled.button<Props>`
     ${Icon} {
         margin-left: 0.875rem;
     }
-    &:last-child {
-        margin-right: 0;
+    & + & {
+        margin-left: 0.5625rem;
+    }
+    ${SelectWrapper} + & {
+        margin-left: 0.5625rem;
     }
 `;
 

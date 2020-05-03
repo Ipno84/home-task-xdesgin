@@ -1,11 +1,12 @@
 import Button from '../../atoms/Button';
 import Icon from '../../atoms/Icon';
+import Props from './props';
 import React from 'react';
 import Span from '../../atoms/Span';
 
-const FilterButton = () => {
+const FilterButton: React.FC<Props> = ({ onClick, buttonRef }) => {
     return (
-        <Button>
+        <Button ref={buttonRef} onClick={onClick}>
             <Span>
                 <Span hideSm={true}>Filter by</Span>
                 <Span

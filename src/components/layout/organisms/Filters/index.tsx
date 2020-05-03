@@ -1,12 +1,12 @@
-import FilterButton from '../../molecules/FilterButton';
 import FiltersContainer from '../../atoms/FiltersContainer';
 import React from 'react';
+import SelectYear from '../../organisms/SelectYear';
 import SortButton from '../../molecules/SortButton';
 
 const Filters = () => {
     return (
         <FiltersContainer>
-            <FilterButton />
+            <SelectYear />
             <SortButton />
         </FiltersContainer>
     );
