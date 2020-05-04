@@ -1,7 +1,3 @@
-const ordinalRules: Intl.PluralRules = new Intl.PluralRules('en', {
-    type: 'ordinal',
-});
-
 const suffixes: GenericObject = {
     one: 'st',
     two: 'nd',
@@ -17,6 +13,26 @@ const suffixes: GenericObject = {
  * @returns {string}
  */
 export default function getOrdinalNumber(number: number): string {
-    const suffix = suffixes[ordinalRules.select(number)];
+    let suffix: string = '';
+    if (Intl && Intl.PluralRules) {
+        const ordinalRules: Intl.PluralRules = new Intl.PluralRules('en', {
+            type: 'ordinal',
+        });
+        suffix = suffixes[ordinalRules.select(number)];
+    } else {
+        switch (number) {
+            case 1:
+                suffix = 'st';
+                break;
+            case 2:
+                suffix = 'nd';
+                break;
+            case 3:
+                suffix = 'rd';
+                break;
+            default:
+                suffix = 'th';
+        }
+    }
     return number + suffix;
 }

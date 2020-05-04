@@ -1,3 +1,4 @@
+import './polyfill';
 import './assets/css/font.css';
 
 import * as serviceWorker from './serviceWorker';
