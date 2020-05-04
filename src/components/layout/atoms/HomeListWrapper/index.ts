@@ -9,7 +9,8 @@ const HomeListWrapper = styled.div`
         position: sticky;
         top: 0;
         display: none;
-        @media (min-width: 768px) {
+        @media (min-width: ${({ theme }) =>
+                theme.sizes.mediaQueries.tabletPortrait.min}rem) {
             display: block;
             float: left;
         }
@@ -19,10 +20,12 @@ const HomeListWrapper = styled.div`
         display: inline-block;
         padding-left: 1rem;
         padding-right: 1rem;
-        @media (min-width: 992px) {
+        @media (min-width: ${({ theme }) =>
+                theme.sizes.mediaQueries.tabletLandscape.min}rem) {
             padding-right: 5rem;
         }
-        @media (min-width: 768px) {
+        @media (min-width: ${({ theme }) =>
+                theme.sizes.mediaQueries.tabletPortrait.min}rem) {
             width: 56% !important;
         }
     }

@@ -6,23 +6,7 @@ import Rank from '../../atoms/Rank';
 import React from 'react';
 import Section from '../../atoms/Section';
 import Span from '../../atoms/Span';
-
-const ordinalRules: Intl.PluralRules = new Intl.PluralRules('en', {
-    type: 'ordinal',
-});
-const dateRules = new Intl.DateTimeFormat('en', {
-    month: 'short',
-});
-const suffixes: any = {
-    one: 'st',
-    two: 'nd',
-    few: 'rd',
-    other: 'th',
-};
-function ordinal(number: number) {
-    const suffix = suffixes[ordinalRules.select(number)];
-    return number + suffix;
-}
+import formatLaunchDate from '../../../../helpers/formatLaunchDate';
 
 const Launch: React.FC<Props> = ({
     flightNumber,
@@ -30,20 +14,18 @@ const Launch: React.FC<Props> = ({
     rocketName,
     date,
 }) => {
-    const data = new Date(date * 1000);
     return (
         <LaunchCard>
-            <Section side='left'>
-                <Rank>#{flightNumber}</Rank>
-            </Section>
-            <Section side='body'>
-                <H3>{missionName}</H3>
+            <Section side='combined'>
+                <Section side='left'>
+                    <Rank title={`#${flightNumber}`}>#{flightNumber}</Rank>
+                </Section>
+                <Section side='body'>
+                    <H3 title={missionName}>{missionName}</H3>
+                </Section>
             </Section>
             <Section side='right'>
-                <Span>
-                    {ordinal(data.getDate())} {dateRules.format(data)}{' '}
-                    {data.getFullYear()}
-                </Span>
+                <Span>{formatLaunchDate(date)}</Span>
                 <H4>{rocketName}</H4>
             </Section>
         </LaunchCard>

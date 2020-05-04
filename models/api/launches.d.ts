@@ -5,6 +5,7 @@ type Sort =
     | 'flight_number'
     | 'launch_year'
     | 'launch_date_utc'
+    | 'launch_date_unix'
     | 'launch_date_local'
     | 'tbd'
     | 'rocket_id'
@@ -60,6 +61,7 @@ declare interface GetLaunchesParams {
     flight_number?: number;
     launch_year?: number;
     launch_date_utc?: string; // 2017-06-23T19:10:000Z
+    launch_date_unix?: number; // 2017-06-23T19:10:000Z
     launch_date_local?: string; // 2017-06-23T19:10:000Z
     tbd?: boolean;
     rocket_id?: string;

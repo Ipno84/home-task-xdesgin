@@ -8,7 +8,8 @@ const Span = styled.span<Props>`
         hideSm &&
         css`
             display: none;
-            @media (min-width: 410px) {
+            @media (min-width: ${({ theme }) =>
+                    theme.sizes.mediaQueries.phone.min}rem) {
                 display: inline-block;
             }
         `}
@@ -16,7 +17,8 @@ const Span = styled.span<Props>`
         showSm &&
         css`
             display: none;
-            @media (max-width: 409px) {
+            @media (max-width: ${({ theme }) =>
+                    theme.sizes.mediaQueries.phone.max}rem) {
                 display: inline-block;
             }
         `}

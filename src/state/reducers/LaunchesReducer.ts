@@ -39,7 +39,6 @@ const LaunchesReducer = (
             return {
                 ...state,
                 year: action.year,
-                items: initialState.items,
             };
         case TOGGLE_ORDER:
             return {

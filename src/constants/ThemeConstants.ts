@@ -16,6 +16,21 @@ const getColor = (
         .string();
 };
 
+export const BASE_SIZE: number = 16;
+
+export const mediaQueries = {
+    phone: {
+        min: 25.625,
+        max: 25.5625,
+    },
+    tabletPortrait: {
+        min: 48,
+    },
+    tabletLandscape: {
+        min: 62,
+    },
+};
+
 const ThemeConstants: Theme = {
     colors: {
         black: (opacity: number = 1, darken: number = 0) =>
@@ -29,6 +44,10 @@ const ThemeConstants: Theme = {
     },
     fontFamilies: {
         primary: "'Brandon Grotesque', Arial, Helvetica, sans-serif",
+    },
+    sizes: {
+        base: BASE_SIZE,
+        mediaQueries,
     },
 };
 

@@ -11,7 +11,8 @@ const FiltersContainer = styled.div`
         right: auto;
         left: 0;
     }
-    @media (min-width: 768px) {
+    @media (min-width: ${({ theme }) =>
+            theme.sizes.mediaQueries.phone.min}rem) {
         text-align: right;
         ${SelectContainer} {
             right: 0;
