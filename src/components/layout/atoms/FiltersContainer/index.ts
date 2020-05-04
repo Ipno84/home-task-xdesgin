@@ -1,12 +1,13 @@
-import styled, { css } from 'styled-components';
-
 import SelectContainer from './../SelectContainer';
-import isPositionStickySupported from './../../../../helpers/isPositionStickySupported';
+import styled from 'styled-components';
 
 const FiltersContainer = styled.div`
     padding-left: 1rem;
     padding-right: 5rem;
     margin-bottom: 0.8125rem;
+    position: sticky;
+    top: 1.5rem;
+    z-index: 1;
     ${SelectContainer} {
         right: auto;
         left: 0;
@@ -19,13 +20,6 @@ const FiltersContainer = styled.div`
             left: auto;
         }
     }
-    ${() =>
-        isPositionStickySupported() &&
-        css`
-            position: sticky;
-            top: 1.5rem;
-            z-index: 1;
-        `}
 `;
 
 export default FiltersContainer;

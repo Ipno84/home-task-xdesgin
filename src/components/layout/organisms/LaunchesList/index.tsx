@@ -4,6 +4,7 @@ import { List, WindowScroller } from 'react-virtualized';
 
 import H5 from '../../atoms/H5';
 import Launch from '../../molecules/Launch';
+import LaunchSkeleton from '../../molecules/LaunchSkeleton';
 import ListWrapper from '../../atoms/ListWrapper';
 import React from 'react';
 import useLaunchesList from '../../../../hooks/useLaunchesList';
@@ -32,12 +33,18 @@ function rowRenderer(style: CSSRuleList, launch: Launch) {
     );
 }
 
+Object.keys(Array.from({ length: 12 }));
+
 const LaunchesList = () => {
-    const items = useLaunchesList();
+    const { launches, isLoading } = useLaunchesList();
     const rowHeight = useListRowHeight();
     return (
         <ListWrapper>
-            {!items || items.length === 0 ? (
+            {isLoading && (!launches || launches.length === 0) ? (
+                Object.keys(Array.from({ length: 12 })).map((e) => (
+                    <LaunchSkeleton />
+                ))
+            ) : !launches || launches.length === 0 ? (
                 <H5>No launches found</H5>
             ) : (
                 <WindowScroller>
@@ -56,12 +63,12 @@ const LaunchesList = () => {
                                 onScroll={onChildScroll}
                                 scrollTop={scrollTop}
                                 width={300}
-                                rowCount={items.length}
+                                rowCount={launches.length}
                                 rowHeight={rowHeight}
                                 rowRenderer={(payload: any) =>
                                     rowRenderer(
                                         { ...payload.style, height: rowHeight },
-                                        items[payload.index]
+                                        launches[payload.index]
                                     )
                                 }
                             />

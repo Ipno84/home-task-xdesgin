@@ -16,6 +16,10 @@ const SelectContainer = styled.ul<Props>`
     text-align: left;
     border-radius: 0.625rem;
     transition: top 0.15s ease, opacity 0.15s ease;
+    z-index: 1;
+    @media (orientation: landscape) {
+        max-height: calc(100vh - 8rem);
+    }
     ${({ visible }) =>
         visible
             ? css`

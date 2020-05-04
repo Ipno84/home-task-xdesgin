@@ -5,9 +5,11 @@ import Props from './props';
 const SelectItem = styled.li<Props>`
     padding: 0.5rem 1rem;
     cursor: pointer;
-    &:hover {
-        background-color: ${({ theme }) => theme.colors.primary(1)};
-        color: ${({ theme }) => theme.colors.white(1)};
+    @media (hover: hover) {
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.primary(1)};
+            color: ${({ theme }) => theme.colors.white(1)};
+        }
     }
     ${({ selected }) =>
         selected &&

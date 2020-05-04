@@ -33,11 +33,13 @@ const Button = styled.button<Props>`
                 max-width: 0;
                 transition: opacity 0.3s ease, max-width 0.3s ease;
             }
-            &:hover {
-                padding-left: 1rem;
-                ${Span} {
-                    max-width: 10rem;
-                    opacity: 1;
+            @media (hover: hover) {
+                &:hover {
+                    padding-left: 1rem;
+                    ${Span} {
+                        max-width: 10rem;
+                        opacity: 1;
+                    }
                 }
             }
         `}

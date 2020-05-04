@@ -13,8 +13,8 @@ import { TransformConfig } from 'redux-persist/es/createTransform';
 const initialState: LaunchesStateType = {
     items: [],
     year: '',
-    order: 'asc',
-    isLoading: false,
+    order: 'desc',
+    isLoading: true,
 };
 
 export const LaunchesTransform: Transform<

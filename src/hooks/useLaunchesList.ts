@@ -4,8 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Store } from '../../models/state/store';
 import getFilteredItemsSelector from './../state/selectors/LaunchesSelectors/getFilteredItemsSelector';
 import getLaunchesAction from './../state/actions/LaunchesActions/getLaunchesAction';
+import isLoadingSelector from '../state/selectors/LaunchesSelectors/isLoadingSelector';
 
-export default function useLaunchesList(): Launch[] {
+interface HookResponse {
+    launches: Launch[];
+    isLoading: boolean;
+}
+
+export default function useLaunchesList(): HookResponse {
     const dispatch = useDispatch();
     const getLaunches = useCallback(() => dispatch(getLaunchesAction()), [
         dispatch,
@@ -16,5 +22,6 @@ export default function useLaunchesList(): Launch[] {
     const launches = useSelector((state: Store) =>
         getFilteredItemsSelector(state)
     );
-    return launches;
+    const isLoading = useSelector((state: Store) => isLoadingSelector(state));
+    return { launches, isLoading };
 }
