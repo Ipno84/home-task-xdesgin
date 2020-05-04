@@ -35,7 +35,6 @@ function rowRenderer(style: CSSRuleList, launch: Launch) {
 const LaunchesList = () => {
     const items = useLaunchesList();
     const rowHeight = useListRowHeight();
-    console.log(rowHeight);
     return (
         <ListWrapper>
             {!items || items.length === 0 ? (
