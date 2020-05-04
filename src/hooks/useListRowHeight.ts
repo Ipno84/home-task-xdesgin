@@ -12,10 +12,16 @@ export default function useListRowHeight() {
     const onWidowResize = useCallback(
         (e: Event) => {
             const windowWidth = (e.currentTarget as any).innerWidth;
-            if (windowWidth >= mediaQueries.phone.min && rowHeight !== LARGE) {
+            if (
+                windowWidth >= mediaQueries.phone.min * BASE_SIZE &&
+                rowHeight !== LARGE
+            ) {
                 setRowHeight(LARGE);
             }
-            if (windowWidth < mediaQueries.phone.min && rowHeight !== TINY) {
+            if (
+                windowWidth < mediaQueries.phone.min * BASE_SIZE &&
+                rowHeight !== TINY
+            ) {
                 setRowHeight(TINY);
             }
         },

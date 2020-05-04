@@ -23,6 +23,10 @@ export const mediaQueries = {
         min: 25.625,
         max: 25.5625,
     },
+    largePhone: {
+        min: 35,
+        max: 34.9375,
+    },
     tabletPortrait: {
         min: 48,
     },

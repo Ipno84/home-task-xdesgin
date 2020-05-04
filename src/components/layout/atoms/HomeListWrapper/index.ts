@@ -17,17 +17,6 @@ const HomeListWrapper = styled.div`
     }
     .ReactVirtualized__Grid.ReactVirtualized__List {
         width: 100% !important;
-        display: inline-block;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        @media (min-width: ${({ theme }) =>
-                theme.sizes.mediaQueries.tabletLandscape.min}rem) {
-            padding-right: 5rem;
-        }
-        @media (min-width: ${({ theme }) =>
-                theme.sizes.mediaQueries.tabletPortrait.min}rem) {
-            width: 56% !important;
-        }
     }
 `;
 

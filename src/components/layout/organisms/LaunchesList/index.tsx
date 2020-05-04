@@ -2,12 +2,12 @@ import 'react-virtualized/styles.css';
 
 import { List, WindowScroller } from 'react-virtualized';
 
+import H5 from '../../atoms/H5';
 import Launch from '../../molecules/Launch';
+import ListWrapper from '../../atoms/ListWrapper';
 import React from 'react';
-import { Store } from '../../../../../models/state/store';
-import getFilteredItemsSelector from './../../../../state/selectors/LaunchesSelectors/getFilteredItemsSelector';
+import useLaunchesList from '../../../../hooks/useLaunchesList';
 import useListRowHeight from '../../../../hooks/useListRowHeight';
-import { useSelector } from 'react-redux';
 
 function rowRenderer(style: CSSRuleList, launch: Launch) {
     return (
@@ -33,39 +33,44 @@ function rowRenderer(style: CSSRuleList, launch: Launch) {
 }
 
 const LaunchesList = () => {
-    const items = useSelector((state: Store) =>
-        getFilteredItemsSelector(state)
-    );
+    const items = useLaunchesList();
     const rowHeight = useListRowHeight();
+    console.log(rowHeight);
     return (
-        <WindowScroller>
-            {({
-                height,
-                isScrolling,
-                registerChild,
-                onChildScroll,
-                scrollTop,
-            }) => (
-                <div ref={registerChild}>
-                    <List
-                        autoHeight
-                        height={height}
-                        isScrolling={isScrolling}
-                        onScroll={onChildScroll}
-                        scrollTop={scrollTop}
-                        width={300}
-                        rowCount={items.length}
-                        rowHeight={rowHeight}
-                        rowRenderer={(payload: any) =>
-                            rowRenderer(
-                                { ...payload.style, height: rowHeight },
-                                items[payload.index]
-                            )
-                        }
-                    />
-                </div>
+        <ListWrapper>
+            {!items || items.length === 0 ? (
+                <H5>No launches found</H5>
+            ) : (
+                <WindowScroller>
+                    {({
+                        height,
+                        isScrolling,
+                        registerChild,
+                        onChildScroll,
+                        scrollTop,
+                    }) => (
+                        <div ref={registerChild}>
+                            <List
+                                autoHeight
+                                height={height}
+                                isScrolling={isScrolling}
+                                onScroll={onChildScroll}
+                                scrollTop={scrollTop}
+                                width={300}
+                                rowCount={items.length}
+                                rowHeight={rowHeight}
+                                rowRenderer={(payload: any) =>
+                                    rowRenderer(
+                                        { ...payload.style, height: rowHeight },
+                                        items[payload.index]
+                                    )
+                                }
+                            />
+                        </div>
+                    )}
+                </WindowScroller>
             )}
-        </WindowScroller>
+        </ListWrapper>
     );
 };
 

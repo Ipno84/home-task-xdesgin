@@ -9,7 +9,7 @@ const Span = styled.span<Props>`
         css`
             display: none;
             @media (min-width: ${({ theme }) =>
-                    theme.sizes.mediaQueries.phone.min}rem) {
+                    theme.sizes.mediaQueries.largePhone.min}rem) {
                 display: inline-block;
             }
         `}
@@ -18,7 +18,7 @@ const Span = styled.span<Props>`
         css`
             display: none;
             @media (max-width: ${({ theme }) =>
-                    theme.sizes.mediaQueries.phone.max}rem) {
+                    theme.sizes.mediaQueries.largePhone.max}rem) {
                 display: inline-block;
             }
         `}

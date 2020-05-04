@@ -1,4 +1,4 @@
-import { Config } from './../../constants/StoreConstants';
+import { Config } from '../../constants/StoreConfigConstants';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import rootReducers from './../reducers';
@@ -9,6 +9,6 @@ export default function createReducer(asyncReducers: any) {
         combineReducers({
             ...rootReducers,
             ...asyncReducers,
-        })
+        }) as any
     );
 }

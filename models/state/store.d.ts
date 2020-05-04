@@ -1,6 +1,9 @@
-import { WebStorage } from 'redux-persist';
+import { WebStorage, Transform } from 'redux-persist';
+import { TransformConfig } from 'redux-persist/es/createTransform';
 
-declare type ReducerActionType = GetLaunchesActionType & SetYearActionType & ActionType;
+declare type ReducerActionType = GetLaunchesActionType &
+    SetYearActionType &
+    ActionType;
 
 declare type PersistKeyType = 'xspace';
 
@@ -9,6 +12,11 @@ declare interface ReduxPersistConfigType {
     key: PersistKeyType;
     storage: WebStorage;
     debug: boolean;
+    transforms: Transform<
+        LaunchesStateType,
+        LaunchesStateType,
+        TransformConfig
+    >[];
 }
 
 declare interface Store {

@@ -4,8 +4,11 @@ import {
     SET_YEAR,
     TOGGLE_ORDER,
 } from './../../constants/LaunchesConstants';
+import { Transform, createTransform } from 'redux-persist';
 
+import { LAUNCHES_REDUCER_NAME } from '../../constants/StoreConstants';
 import { ReducerActionType } from '../../../models/state/store';
+import { TransformConfig } from 'redux-persist/es/createTransform';
 
 const initialState: LaunchesStateType = {
     items: [],
@@ -13,6 +16,24 @@ const initialState: LaunchesStateType = {
     order: 'asc',
     isLoading: false,
 };
+
+export const LaunchesTransform: Transform<
+    LaunchesStateType,
+    LaunchesStateType,
+    TransformConfig
+> = createTransform(
+    (inboundState: LaunchesStateType): LaunchesStateType => {
+        return { ...inboundState };
+    },
+    (outboundState: LaunchesStateType): LaunchesStateType => {
+        return {
+            ...outboundState,
+            items: initialState.items,
+            isLoading: initialState.isLoading,
+        };
+    },
+    { whitelist: [LAUNCHES_REDUCER_NAME] }
+);
 
 const LaunchesReducer = (
     state: LaunchesStateType = initialState,
