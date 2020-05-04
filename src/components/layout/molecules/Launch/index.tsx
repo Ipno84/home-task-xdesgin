@@ -1,19 +1,31 @@
+import React, { ReactElement } from 'react';
+
 import H3 from '../../atoms/H3';
 import H4 from '../../atoms/H4';
 import LaunchCard from '../../atoms/LaunchCard';
 import Props from './props';
 import Rank from '../../atoms/Rank';
-import React from 'react';
 import Section from '../../atoms/Section';
 import Span from '../../atoms/Span';
 import formatLaunchDate from '../../../../helpers/formatLaunchDate';
 
+/**
+ * Component that render launch item inside a list
+ *
+ * @param {Props} {
+ *     flightNumber,
+ *     missionName,
+ *     rocketName,
+ *     date,
+ * }
+ * @returns {ReactElement}
+ */
 const Launch: React.FC<Props> = ({
     flightNumber,
     missionName,
     rocketName,
     date,
-}) => {
+}: Props): ReactElement => {
     return (
         <LaunchCard>
             <Section side='combined'>

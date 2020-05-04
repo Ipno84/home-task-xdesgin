@@ -3,6 +3,7 @@ declare interface LaunchesStateType {
     year: string;
     order: Order;
     isLoading: boolean;
+    rowHeight: number;
 }
 
 declare interface GetLaunchesActionArgs {
@@ -16,10 +17,18 @@ declare interface SetYearActionArgs {
     success?: boolean;
 }
 
+declare interface SetRowHeightActionArgs {
+    rowHeight: number;
+}
+
 declare interface GetLaunchesActionType
     extends ActionType,
         GetLaunchesActionArgs {}
 
 declare interface SetYearActionType extends ActionType, SetYearActionArgs {}
+
+declare interface SetRowHeightActionType
+    extends ActionType,
+        SetRowHeightActionArgs {}
 
 declare type LaunchesReducerName = 'launches';

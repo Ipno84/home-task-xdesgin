@@ -1,11 +1,17 @@
+import React, { ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 import LaunchCard from '../../atoms/LaunchCard';
-import React from 'react';
 import Section from '../../atoms/Section';
 import Shimmer from '../../atoms/Shimmer';
 
-const LaunchSkeleton = () => {
+/**
+ * Component that renders shimmer elements, it replace Launch item list componen
+ * when the list is empty and the application is requestin launches to the API
+ *
+ * @returns {ReactElement}
+ */
+const LaunchSkeleton: React.FC = (): ReactElement => {
     return (
         <LaunchCard>
             <SectionSkeleton side='combined'>

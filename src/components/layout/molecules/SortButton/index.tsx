@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../atoms/Button';
@@ -9,7 +9,13 @@ import { Store } from '../../../../../models/state/store';
 import isLoadingSelector from './../../../../state/selectors/LaunchesSelectors/isLoadingSelector';
 import toggleOrderAction from './../../../../state/actions/LaunchesActions/toggleOrderAction';
 
-const SortButton = () => {
+/**
+ * Component that renders a button. It performs request to API for getting launches
+ * It's used to refresh launches launches state
+ *
+ * @returns {ReactElement}
+ */
+const SortButton: React.FC = (): ReactElement => {
     const dispatch = useDispatch();
     const toggleOrder = useCallback(() => dispatch(toggleOrderAction()), [
         dispatch,

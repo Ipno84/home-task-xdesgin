@@ -1,4 +1,6 @@
 import { DefaultTheme } from 'styled-components';
+import { Store, Reducer } from 'redux';
+import { Saga } from 'redux-saga';
 
 declare global {
     interface GenericObject {
@@ -41,5 +43,16 @@ declare global {
 
     declare interface ActionType {
         type: string;
+    }
+
+    declare interface ReduxStore extends Store {
+        asyncReducers: {
+            [x: string]: Reducer;
+        };
+        injectReducer: (key: string, asyncReducer: Reducer) => void;
+        asyncSagas: {
+            [x: string]: Saga<any[]>;
+        };
+        injectSaga: (key: string, asyncSaga: Saga<any[]>) => void;
     }
 }

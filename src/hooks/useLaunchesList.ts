@@ -11,6 +11,13 @@ interface HookResponse {
     isLoading: boolean;
 }
 
+/**
+ * React hook for sending request for launches. The request is performed just on component mount
+ * It return the launches sorted list, filtered by year and a param that indicates if a request is in pending
+ *
+ * @export
+ * @returns {HookResponse}
+ */
 export default function useLaunchesList(): HookResponse {
     const dispatch = useDispatch();
     const getLaunches = useCallback(() => dispatch(getLaunchesAction()), [

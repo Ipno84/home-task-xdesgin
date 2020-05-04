@@ -1,21 +1,37 @@
 import 'react-virtualized/styles.css';
 
-import { List, WindowScroller } from 'react-virtualized';
+import { List, ListRowProps, WindowScroller } from 'react-virtualized';
+import React, { ReactElement } from 'react';
 
 import H5 from '../../atoms/H5';
 import Launch from '../../molecules/Launch';
 import LaunchSkeleton from '../../molecules/LaunchSkeleton';
 import ListWrapper from '../../atoms/ListWrapper';
-import React from 'react';
+import { Store } from '../../../../../models/state/store';
+import getLaunchItemSelector from '../../../../state/selectors/LaunchesSelectors/getLaunchItemSelector';
+import getRowHeightSelector from '../../../../state/selectors/LaunchesSelectors/getRowHeightSelector';
 import useLaunchesList from '../../../../hooks/useLaunchesList';
 import useListRowHeight from '../../../../hooks/useListRowHeight';
+import { useSelector } from 'react-redux';
 
-function rowRenderer(style: CSSRuleList, launch: Launch) {
+interface OptionsProps {
+    rowHeight: number;
+    launch: Launch;
+}
+
+const RowRenderer = (props: ListRowProps) => {
+    const rowHeight = useSelector((state: Store) =>
+        getRowHeightSelector(state)
+    );
+    const launch = useSelector((state: Store) =>
+        getLaunchItemSelector(state, props.index)
+    );
     return (
         <div
             key={launch.flight_number}
             style={{
-                ...style,
+                ...props.style,
+                height: `${rowHeight}px`,
                 width: '100%',
             }}
         >
@@ -31,18 +47,24 @@ function rowRenderer(style: CSSRuleList, launch: Launch) {
             />
         </div>
     );
-}
+};
 
-Object.keys(Array.from({ length: 12 }));
-
-const LaunchesList = () => {
+/**
+ * Component that renders a message if the launches list is empty and there's no pending request to API
+ * It renders a list of Skeleton components if the launches list is empty but there's a pending request
+ * Although it renders a virtualized list. Even if the list is large, just the item visible in viewport
+ * are rendered
+ *
+ * @returns {ReactElement}
+ */
+const LaunchesList: React.FC = (): ReactElement => {
     const { launches, isLoading } = useLaunchesList();
     const rowHeight = useListRowHeight();
     return (
         <ListWrapper>
             {isLoading && (!launches || launches.length === 0) ? (
                 Object.keys(Array.from({ length: 12 })).map((e) => (
-                    <LaunchSkeleton />
+                    <LaunchSkeleton key={e} />
                 ))
             ) : !launches || launches.length === 0 ? (
                 <H5>No launches found</H5>
@@ -65,12 +87,9 @@ const LaunchesList = () => {
                                 width={300}
                                 rowCount={launches.length}
                                 rowHeight={rowHeight}
-                                rowRenderer={(payload: any) =>
-                                    rowRenderer(
-                                        { ...payload.style, height: rowHeight },
-                                        launches[payload.index]
-                                    )
-                                }
+                                rowRenderer={(props: ListRowProps) => (
+                                    <RowRenderer {...props} />
+                                )}
                             />
                         </div>
                     )}

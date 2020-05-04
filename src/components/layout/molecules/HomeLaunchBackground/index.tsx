@@ -1,21 +1,24 @@
+import React, { ReactElement } from 'react';
+
 import Img from '../../atoms/Img';
 import LaunchBackground from '../../atoms/LaunchBackground';
-import React from 'react';
+import getImageSrcSetInfo from '../../../../helpers/getImageSrcSetInfo';
 
-const imagePath: string = './../../../../assets/img/launch-home';
-const imageExt: string = '.png';
-const imageSet: string[] = ['', '@2x', '@3x'];
-const imageSetPath: string = imageSet
-    .map(
-        (e: string, i: number): string =>
-            `${imagePath}${e}${imageExt} ${i + 1}x`
-    )
-    .join(', ');
-
-const HomeLaunchBackground = () => {
+/**
+ * The components that renders the left side of the home page which contains an image
+ * The image is hidden in small devices (tablets and phones)
+ *
+ * @returns {ReactElement}
+ */
+const HomeLaunchBackground: React.FC = (): ReactElement => {
+    const srcSetInfo = getImageSrcSetInfo(
+        './../../../../assets/img/launch-home',
+        '.png',
+        3
+    );
     return (
         <LaunchBackground>
-            <Img srcSet={imageSetPath} src={imagePath + imageExt} />
+            <Img {...srcSetInfo} />
         </LaunchBackground>
     );
 };

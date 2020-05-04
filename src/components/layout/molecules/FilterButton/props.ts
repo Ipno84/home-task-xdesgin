@@ -1,4 +1,4 @@
 export default interface Props {
-    onClick?: any;
-    buttonRef?: React.MutableRefObject<HTMLButtonElement>;
+    onClick: () => void;
+    buttonRef: React.MutableRefObject<HTMLButtonElement>;
 }

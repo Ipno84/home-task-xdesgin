@@ -1,3 +1,4 @@
+import { Persistor, persistStore } from 'redux-persist';
 import { Reducer, applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware, { Saga } from 'redux-saga';
 
@@ -5,13 +6,12 @@ import LaunchesSaga from './../middlewares/sagas/LaunchesSaga';
 import composeEnhancers from './composeEnhancers';
 import createReducer from './createReducer';
 import { fork } from 'redux-saga/effects';
-import { persistStore } from 'redux-persist';
 import rootReducers from './../reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 
-function configureStore() {
-    let store: any = createStore(
+function configureStore(): { store: ReduxStore; persistor: Persistor } {
+    let store: ReduxStore = createStore(
         createReducer({}),
         undefined,
         composeEnhancers(applyMiddleware(sagaMiddleware))
@@ -21,21 +21,21 @@ function configureStore() {
     });
 
     (store as any).asyncReducers = { ...rootReducers };
-    (store as any).injectReducer = (key: string, asyncReducer: Reducer) => {
-        if (!(store as any).asyncReducers[key]) {
-            (store as any).asyncReducers[key] = asyncReducer;
-            store.replaceReducer(createReducer((store as any).asyncReducers));
+    store.injectReducer = (key: string, asyncReducer: Reducer): void => {
+        if (!store.asyncReducers[key]) {
+            store.asyncReducers[key] = asyncReducer;
+            store.replaceReducer(createReducer(store.asyncReducers));
             persistor.persist();
         }
     };
 
-    (store as any).asyncSagas = { LaunchesSaga };
-    (store as any).injectSaga = (key: string, asyncSaga: Saga<any[]>) => {
+    store.asyncSagas = { LaunchesSaga };
+    store.injectSaga = (key: string, asyncSaga: Saga<any[]>) => {
         function* combinedSagas() {
             yield fork(asyncSaga);
         }
-        if (!(store as any).asyncSagas[key]) {
-            (store as any).asyncSagas[key] = asyncSaga;
+        if (!store.asyncSagas[key]) {
+            store.asyncSagas[key] = asyncSaga;
             sagaMiddleware.run(combinedSagas);
             persistor.persist();
         }

@@ -3,6 +3,7 @@ import { TransformConfig } from 'redux-persist/es/createTransform';
 
 declare type ReducerActionType = GetLaunchesActionType &
     SetYearActionType &
+    SetRowHeightActionType &
     ActionType;
 
 declare type PersistKeyType = 'xspace';
