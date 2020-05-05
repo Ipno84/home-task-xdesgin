@@ -10,5 +10,9 @@ const dateRules = new Intl.DateTimeFormat('en', {
  * @returns {string}
  */
 export default function getShortMonth(date: Date): string {
-    return dateRules.format(date);
+    try {
+        return dateRules.format(date);
+    } catch (error) {
+        return '';
+    }
 }

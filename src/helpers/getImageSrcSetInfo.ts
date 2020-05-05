@@ -1,5 +1,5 @@
 interface SetInfo {
-    srcSet: string;
+    srcSet?: string;
     src: string;
 }
 
@@ -10,13 +10,19 @@ interface SetInfo {
  * @param {string} imagePath
  * @param {string} imageExt
  * @param {number} set
- * @returns {SetInfo}
+ * @returns {(SetInfo | {}})}
  */
 export default function getImageSrcSetInfo(
     imagePath: string,
     imageExt: string,
     set: number
-): SetInfo {
+): SetInfo | {} {
+    if (!imagePath || !imageExt) return {};
+    if (!set || set < 2) {
+        return {
+            src: imagePath + imageExt,
+        };
+    }
     const imageSet: string[] = Object.keys(
         Array.from({ length: set })
     ).map((e: string) => (e === '0' ? '' : `@${Number(e) + 1}x`));
