@@ -12,7 +12,7 @@ import Span from '../../atoms/Span';
 const Logo: React.FC = (): ReactElement => {
     return (
         <LogoContainer>
-            <Img src='./../../../../assets/spacex-logo.png' />
+            <Img src={`${process.env.PUBLIC_URL}/assets/spacex-logo.png`} />
             <Span>LAUNCHES</Span>
         </LogoContainer>
     );
