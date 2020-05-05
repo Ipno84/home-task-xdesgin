@@ -12,7 +12,7 @@ import getImageSrcSetInfo from '../../../../helpers/getImageSrcSetInfo';
  */
 const HomeLaunchBackground: React.FC = (): ReactElement => {
     const srcSetInfo = getImageSrcSetInfo(
-        './../../../../assets/img/launch-home',
+        `${process.env.PUBLIC_URL}/assets/img/launch-home`,
         '.png',
         3
     );

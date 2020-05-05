@@ -9,7 +9,7 @@ const spinAnimation: Keyframes = keyframes`
 
 const Icon = styled.i<Props>`
     display: inline-block;
-    background-image: url('./../../../../assets/icon/icons.png');
+    background-image: url(${process.env.PUBLIC_URL}/assets/icon/icons.png);
     background-position: top left;
     background-repeat: no-repeat;
     width: 0.875rem;
@@ -40,13 +40,13 @@ const Icon = styled.i<Props>`
     }}
     @media (-webkit-min-device-pixel-ratio: 2) {
         & {
-            background-image: url('./../../../../assets/icon/icons@2x.png');
+            background-image: url(${process.env.PUBLIC_URL}/assets/icon/icons@2x.png);
             background-size: 0.875rem 2.5rem;
         }
     }
     @media (-webkit-min-device-pixel-ratio: 3) {
         & {
-            background-image: url('./../../../../assets/icon/icons@3x.png');
+            background-image: url(${process.env.PUBLIC_URL}/assets/icon/icons@3x.png);
             background-size: 0.875rem 2.5rem;
         }
     }

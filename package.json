@@ -2,6 +2,7 @@
     "name": "home-task-xdesgin",
     "version": "1.0.0",
     "private": true,
+    "homepage": "https://ipno84.github.io/home-task-xdesgin",
     "dependencies": {
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
