@@ -29,6 +29,9 @@ export default function useLaunchesList(): HookResponse {
     const launches = useSelector((state: Store) =>
         getFilteredItemsSelector(state)
     );
+    useEffect(() => {
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    }, [launches]);
     const isLoading = useSelector((state: Store) => isLoadingSelector(state));
     return { launches, isLoading };
 }

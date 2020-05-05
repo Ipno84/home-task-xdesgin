@@ -22,11 +22,12 @@ export default function setYearAction({
     year,
     success,
 }: SetYearActionArgs): SetYearActionType {
-    const transformedYear = isNaN(Number(year))
-        ? ''
-        : Number(year) < FIRST_AVAILABLE_YEAR
-        ? String(FIRST_AVAILABLE_YEAR)
-        : year;
+    const transformedYear =
+        year === '' || isNaN(Number(year))
+            ? ''
+            : Number(year) < FIRST_AVAILABLE_YEAR
+            ? String(FIRST_AVAILABLE_YEAR)
+            : year;
     if (success) {
         return {
             type: SET_YEAR + SUCCESS,

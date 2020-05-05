@@ -35,6 +35,15 @@ describe('Set year action', () => {
         });
     });
 
+    test('Set empty year', () => {
+        const action = setYearAction({ year: '' });
+        expect(action).toBeInstanceOf(Object);
+        expect(action).toMatchObject({
+            type: SET_YEAR,
+            year: '',
+        });
+    });
+
     test('Set success recent year', () => {
         const action = setYearAction({ success: true, year: '2018' });
         expect(action).toBeInstanceOf(Object);
@@ -50,6 +59,24 @@ describe('Set year action', () => {
         expect(action).toMatchObject({
             type: SET_YEAR + SUCCESS,
             year: String(FIRST_AVAILABLE_YEAR),
+        });
+    });
+
+    test('Set success NaN year', () => {
+        const action = setYearAction({ success: true, year: 'testYear' });
+        expect(action).toBeInstanceOf(Object);
+        expect(action).toMatchObject({
+            type: SET_YEAR + SUCCESS,
+            year: '',
+        });
+    });
+
+    test('Set success empty year', () => {
+        const action = setYearAction({ success: true, year: '' });
+        expect(action).toBeInstanceOf(Object);
+        expect(action).toMatchObject({
+            type: SET_YEAR + SUCCESS,
+            year: '',
         });
     });
 });
