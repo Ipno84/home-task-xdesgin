@@ -34,17 +34,19 @@ const Select: React.FC<Props> = ({
     const ref: React.MutableRefObject<HTMLButtonElement | undefined> = useRef();
     useOutsideClick(ref, () => setIsOpen(false));
     return (
-        <SelectWrapper>
+        <SelectWrapper data-testid='selectWrapper'>
             <TriggerComponent
+                data-testid='selectTrigger'
                 buttonRef={ref}
                 onClick={() => {
                     setIsOpen(!isOpen);
                 }}
             />
-            <SelectContainer visible={isOpen}>
-                {options.map((option) => {
+            <SelectContainer visible={isOpen} data-testid='selectContainer'>
+                {options.map((option, index) => {
                     return (
                         <ItemComponent
+                            data-testid={`${index}_selectItem`}
                             key={option.optionKey}
                             onClick={() => {
                                 onSelectOption(option);
