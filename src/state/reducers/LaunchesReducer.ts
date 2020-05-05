@@ -15,7 +15,7 @@ import { TransformConfig } from 'redux-persist/es/createTransform';
 
 const LARGE = (ROW_HEIGHT.LARGE + ROW_HEIGHT.MARGIN) * BASE_SIZE;
 
-const initialState: LaunchesStateType = {
+export const initialState: LaunchesStateType = {
     items: [],
     year: '',
     order: 'desc',
