@@ -1,6 +1,7 @@
 import { ItemProps, Option, TriggerProps } from '../../molecules/Select/props';
 import React, { ReactElement, useCallback } from 'react';
 
+import { FIRST_AVAILABLE_YEAR } from '../../../../constants/LaunchesConstants';
 import FilterButton from '../../molecules/FilterButton';
 import Select from '../../molecules/Select';
 import SelectItemYear from '../../molecules/SelectItemYear';
@@ -9,7 +10,7 @@ import setYearAction from './../../../../state/actions/LaunchesActions/setYearAc
 import { useDispatch } from 'react-redux';
 
 const options: Option[] = arrayOfLength(
-    new Date().getFullYear() - 2006 + 1
+    new Date().getFullYear() - FIRST_AVAILABLE_YEAR + 1
 ).map((e) => {
     const label = String(new Date().getFullYear() - Number(e));
     return {

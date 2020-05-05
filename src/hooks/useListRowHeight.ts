@@ -7,8 +7,8 @@ import { Store } from '../../models/state/store';
 import getRowHeightSelector from '../state/selectors/LaunchesSelectors/getRowHeightSelector';
 import setRowHeightAction from '../state/actions/LaunchesActions/setRowHeightAction';
 
-const LARGE = (ROW_HEIGHT.LARGE + ROW_HEIGHT.MARGIN) * BASE_SIZE;
-const TINY = (ROW_HEIGHT.TINY + ROW_HEIGHT.MARGIN) * BASE_SIZE;
+export const LARGE = (ROW_HEIGHT.LARGE + ROW_HEIGHT.MARGIN) * BASE_SIZE;
+export const TINY = (ROW_HEIGHT.TINY + ROW_HEIGHT.MARGIN) * BASE_SIZE;
 
 /**
  * React hook, it return the row item list height. It's used for virtualized launches list, it allows,

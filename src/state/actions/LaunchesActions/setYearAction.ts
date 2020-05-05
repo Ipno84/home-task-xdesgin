@@ -1,4 +1,8 @@
-import { SET_YEAR } from '../../../constants/LaunchesConstants';
+import {
+    FIRST_AVAILABLE_YEAR,
+    SET_YEAR,
+} from '../../../constants/LaunchesConstants';
+
 import { SUCCESS } from '../../../constants/BaseConstants';
 
 /**
@@ -18,14 +22,19 @@ export default function setYearAction({
     year,
     success,
 }: SetYearActionArgs): SetYearActionType {
+    const transformedYear = isNaN(Number(year))
+        ? ''
+        : Number(year) < FIRST_AVAILABLE_YEAR
+        ? String(FIRST_AVAILABLE_YEAR)
+        : year;
     if (success) {
         return {
             type: SET_YEAR + SUCCESS,
-            year,
+            year: transformedYear,
         };
     }
     return {
         type: SET_YEAR,
-        year,
+        year: transformedYear,
     };
 }

@@ -14,6 +14,6 @@ export default function setRowHeightAction({
 }: SetRowHeightActionArgs): SetRowHeightActionType {
     return {
         type: SET_ROW_HEIGHT,
-        rowHeight,
+        rowHeight: rowHeight < 0 ? 0 : rowHeight,
     };
 }

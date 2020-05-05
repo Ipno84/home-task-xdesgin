@@ -2,6 +2,12 @@ import { FAILURE, SUCCESS } from '../../../constants/BaseConstants';
 
 import { GET_LAUNCHES } from '../../../constants/LaunchesConstants';
 
+interface Payload {
+    success?: boolean;
+    error?: Error;
+    items?: Launch[];
+}
+
 /**
  * Redux action, without any payload it allows to be intercepted by saga middleware and to send
  * request to the API for getting launches
@@ -17,11 +23,11 @@ export default function getLaunchesAction(
     payload: GetLaunchesActionArgs | null = null
 ): GetLaunchesActionType {
     if (payload) {
-        const { success, error, items } = payload;
+        const { success, error, items }: Payload = payload;
         if (success) {
             return {
                 type: GET_LAUNCHES + SUCCESS,
-                items,
+                items: items ? items : [],
             };
         } else if (error) {
             return {
